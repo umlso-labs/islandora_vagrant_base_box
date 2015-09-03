@@ -25,7 +25,8 @@ while read LINE; do
 	# Set stdin to $LINE
 	set -- $LINE 
 	git clone $1 $2
-	cd $2
+	cd "$DRUPAL_HOME"/sites/all/modules/"$2"
+	echo `pwd`
 	git checkout $3
 	git checkout $4
 	# Set git filemode false for git
@@ -41,7 +42,7 @@ fi
 cd "$DRUPAL_HOME"/sites/all/libraries
 while read LINE; do
 	set -- $LINE 
-	git clone $1 $2
+	git fetch $1 $2
 	cd $2
 	git checkout $3
 	git checkout $4
