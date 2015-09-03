@@ -1,7 +1,0 @@
-islandora_altmetrics
-islandora_premis
-islandora_populator
-islandora_solution_pack_disk_image
-islandora_usage_stats
-islandora_form_fieldpanel
-
