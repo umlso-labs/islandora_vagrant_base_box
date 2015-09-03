@@ -24,36 +24,31 @@ while read LINE; do
 	fi
 	# Set stdin to $LINE
 	set -- $LINE 
-	git clone $1
+	git clone $1 $2
 	cd $2
 	git checkout $3
 	git checkout $4
-	cd ..
+	# Set git filemode false for git
+	git config core.filemode false
+	cd "$DRUPAL_HOME"/sites/all/modules
 done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
-# Set git filemode false for git
-cd "$DRUPAL_HOME"/sites/all/modules
-while read LINE; do
-  set -- $LINE
-  cd $2
-  git config core.filemode false
-  cd "$DRUPAL_HOME"/sites/all/modules
-done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
-
-# Clone Tuque, BagItPHP, and Cite-Proc
+# Clone libraries
 cd "$DRUPAL_HOME"/sites/all
 if [ ! -d libraries ]; then
   mkdir libraries
 fi
 cd "$DRUPAL_HOME"/sites/all/libraries
-git clone https://github.com/Islandora/tuque.git
-git clone git://github.com/scholarslab/BagItPHP.git
-git clone https://github.com/Islandora/citeproc-php.git
-
-cd "$DRUPAL_HOME"/sites/all/libraries/tuque
-git config core.filemode false
-cd "$DRUPAL_HOME"/sites/all/libraries/BagItPHP
-git config core.filemode false
+while read LINE; do
+	set -- $LINE 
+	git clone $1 $2
+	cd $2
+	git checkout $3
+	git checkout $4
+	#Do we need the following line for each library?
+	git config core.filemode false
+	cd "$DRUPAL_HOME"/sites/all/libraries
+done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
 
 # Check for a user's .drush folder, create if it doesn't exist
 if [ ! -d "$HOME_DIR/.drush" ]; then
