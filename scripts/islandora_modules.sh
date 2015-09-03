@@ -29,17 +29,16 @@ while read LINE; do
 	git checkout $3
 	git checkout $4
 	cd ..
-done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque.txt
-
-
+done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
 # Set git filemode false for git
 cd "$DRUPAL_HOME"/sites/all/modules
 while read LINE; do
-  cd "$LINE"
+  set -- $LINE
+  cd $2
   git config core.filemode false
   cd "$DRUPAL_HOME"/sites/all/modules
-done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque.txt
+done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
 # Clone Tuque, BagItPHP, and Cite-Proc
 cd "$DRUPAL_HOME"/sites/all
