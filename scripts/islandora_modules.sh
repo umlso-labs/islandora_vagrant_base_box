@@ -17,19 +17,16 @@ sudo chmod -R 755 "$DRUPAL_HOME"/sites/all/modules
 sudo chmod -R 755 "$DRUPAL_HOME"/sites/default/files
 
 # Clone all Islandora Foundation modules
-cd "$DRUPAL_HOME"/sites/all/modules
+cd "$DRUPAL_HOME"/sites/all/modules/
 while read LINE; do
 	if [ "$LINE" == "" ]; then
 		continue
 	fi
-	# Set stdin to $LINE
 	set -- $LINE 
 	git clone $1 $2
-	cd "$DRUPAL_HOME"/sites/all/modules/"$2"
-	echo `pwd`
+	cd $2
 	git checkout $3
 	git checkout $4
-	# Set git filemode false for git
 	git config core.filemode false
 	cd "$DRUPAL_HOME"/sites/all/modules
 done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
@@ -42,11 +39,10 @@ fi
 cd "$DRUPAL_HOME"/sites/all/libraries
 while read LINE; do
 	set -- $LINE 
-	git fetch $1 $2
+	git clone $1 $2
 	cd $2
 	git checkout $3
 	git checkout $4
-	#Do we need the following line for each library?
 	git config core.filemode false
 	cd "$DRUPAL_HOME"/sites/all/libraries
 done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
