@@ -38,6 +38,13 @@ cd oauth
 git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
 
+# Clone node export 
+cd "$DRUPAL_HOME"/sites/all/modules/
+git clone --branch master http://git.drupal.org/project/node_export.git
+cd node_export 
+git config core.filemode false
+cd "$DRUPAL_HOME"/sites/all/modules/
+
 
 # Clone libraries
 cd "$DRUPAL_HOME"/sites/all
@@ -54,6 +61,14 @@ while read LINE; do
 	git config core.filemode false
 	cd "$DRUPAL_HOME"/sites/all/libraries
 done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
+
+#Get openseadragon-plugin 
+cd "$DRUPAL_HOME"/sites/all/libraries
+wget http://openseadragon.github.io/releases/openseadragon-bin-0.9.129.zip
+unzip openseadragon-bin-0.9.129.zip 
+mv openseadragon-bin-0.9.129 openseadragon 
+cd "$DRUPAL_HOME"/sites/all/libraries
+
 
 # Check for a user's .drush folder, create if it doesn't exist
 if [ ! -d "$HOME_DIR/.drush" ]; then
@@ -97,6 +112,7 @@ drush -y -u 1 en xml_forms islandora_scholar
 drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch 
 drush -y -u 1 en google_analytics_reports islandora_bookmark islandora_bulk_operations islandora_ga_reports islandora_image_annotation islandora_importer islandora_ip_embargo islandora_jodconverter islandora_jwplayer islandora_mapping islandora_openseadragon islandora_paged_content islandora_plupload islandora_simple_workflow
 drush -y -u 1 en umkcdora umkc_feature_types umkc_islandora_browse
+
 #module islandora_openseadragon doesn't meet req. to be enabled. library Openseadragon missing
 #umkc_feature_types depends on umkc_content_types --(included w/ umkc_browse from philred's repo)
 
