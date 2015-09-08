@@ -31,6 +31,14 @@ while read LINE; do
 	cd "$DRUPAL_HOME"/sites/all/modules
 done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
+# Clone oauth 
+cd "$DRUPAL_HOME"/sites/all/modules/
+git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git
+cd oauth 
+git config core.filemode false
+cd "$DRUPAL_HOME"/sites/all/modules/
+
+
 # Clone libraries
 cd "$DRUPAL_HOME"/sites/all
 if [ ! -d libraries ]; then
@@ -89,10 +97,6 @@ drush -y -u 1 en xml_forms islandora_scholar
 drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch 
 drush -y -u 1 en google_analytics_reports islandora_bookmark islandora_bulk_operations islandora_ga_reports islandora_image_annotation islandora_importer islandora_ip_embargo islandora_jodconverter islandora_jwplayer islandora_mapping islandora_openseadragon islandora_paged_content islandora_plupload islandora_simple_workflow
 drush -y -u 1 en umkcdora umkc_feature_types umkc_islandora_browse
-#needs oauth_common:
-#google_analytics_reports 
-#islandora_ga_reports
-
 #module islandora_openseadragon doesn't meet req. to be enabled. library Openseadragon missing
 #umkc_feature_types depends on umkc_content_types --(included w/ umkc_browse from philred's repo)
 
