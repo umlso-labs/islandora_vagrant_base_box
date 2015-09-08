@@ -31,6 +31,15 @@ while read LINE; do
 	cd "$DRUPAL_HOME"/sites/all/modules
 done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
+# Get umkc_islandora_browse manually b/c it has different directory structure
+cd "$DRUPAL_HOME"/sites/all/modules/
+git clone --branch 7.x https://github.com/philred/umkc_islandora_browse.git umkc_islandora_browse 
+cd umkc_islandora_browse 
+git checkout d892d06
+mv modules/* "$DRUPAL_HOME"/sites/all/modules/
+cd "$DRUPAL_HOME"/sites/all/modules/
+rm -r umkc_islandora_browse 
+
 # Clone oauth 
 cd "$DRUPAL_HOME"/sites/all/modules/
 git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git

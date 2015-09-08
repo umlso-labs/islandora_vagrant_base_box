@@ -52,4 +52,3 @@ https://github.com/Islandora/objective_forms.git objective_forms 7.x 4dd7066
 https://github.com/Islandora/php_lib.git php_lib 7.x bc7de5f
 https://github.com/philred/umkcdora.git umkcdora 7.x 8a12e15
 https://github.com/discoverygarden/umkc-feature-types.git umkc-feature-types master 0fb4d2f
-https://github.com/philred/umkc_islandora_browse.git umkc_islandora_browse 7.x d892d06
