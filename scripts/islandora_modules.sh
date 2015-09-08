@@ -75,9 +75,9 @@ done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
 cd "$DRUPAL_HOME"/sites/all/libraries
 wget http://openseadragon.github.io/releases/openseadragon-bin-0.9.129.zip
 unzip openseadragon-bin-0.9.129.zip 
+# Directory must be: $DRUPAL_HOME/sites/all/libraries/openseadragon
 mv openseadragon-bin-0.9.129 openseadragon 
 cd "$DRUPAL_HOME"/sites/all/libraries
-
 
 # Check for a user's .drush folder, create if it doesn't exist
 if [ ! -d "$HOME_DIR/.drush" ]; then
@@ -105,6 +105,7 @@ if [ -d "$HOME_DIR/.drush" -a -f "$DRUPAL_HOME/sites/all/modules/islandora_inter
   mv "$DRUPAL_HOME/sites/all/modules/islandora_internet_archive_bookreader/islandora_internet_archive_bookreader.drush.inc" "$HOME_DIR/.drush"
 fi
 
+cd "$DRUPAL_HOME"/sites/all/modules
 #drush -y -u 1 en php_lib islandora objective_forms
 #drush -y -u 1 en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views
 #drush -y -u 1 en islandora_basic_collection islandora_pdf islandora_audio islandora_book islandora_compound_object islandora_disk_image islandora_entities islandora_entities_csv_import islandora_basic_image islandora_large_image islandora_newspaper islandora_video islandora_web_archive
