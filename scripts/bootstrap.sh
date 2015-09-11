@@ -45,11 +45,11 @@ echo "JAVA_HOME=$JAVA_HOME" >> /etc/environment
 apt-get -y install maven
 
 # Tomcat
-apt-get -y install tomcat7 tomcat7-admin
-usermod -a -G tomcat7 vagrant
+apt-get -y install tomcat6 tomcat6-admin
+usermod -a -G tomcat6 vagrant
 
 # We still need this for the rest of the times Tomcat is run in the other build scripts
-sed -i "s|#JAVA_HOME=/usr/lib/jvm/openjdk-[0-9]\+-jdk|JAVA_HOME=$JAVA_HOME|g" /etc/default/tomcat7
+sed -i "s|#JAVA_HOME=/usr/lib/jvm/openjdk-[0-9]\+-jdk|JAVA_HOME=$JAVA_HOME|g" /etc/default/tomcat6
 
 # Wget and curl
 apt-get -y install wget curl
