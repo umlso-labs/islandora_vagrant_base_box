@@ -11,7 +11,7 @@ fi
 # Download Solr
 if [ ! -f "$DOWNLOAD_DIR/apache-solr-3.6.2.tgz" ]; then
   echo "Downloading Solr"
-  wget -q -O "$DOWNLOAD_DIR/solr-$SOLR_VERSION.tgz" "http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz"
+  wget -q -O "$DOWNLOAD_DIR/apache-solr-3.6.2.tgz" "http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz"
 fi
 cd /tmp
 cp "$DOWNLOAD_DIR/apache-solr-3.6.2.tgz" /tmp

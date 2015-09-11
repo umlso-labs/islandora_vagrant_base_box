@@ -28,16 +28,16 @@ mv -v ./* "$DJATOKA_HOME"
 ln -s "$DJATOKA_HOME"/bin/Linux-x86-64/kdu_compress /usr/bin/kdu_compress
 
 # Deploy Djatoka
-cp -v "$DJATOKA_HOME"/dist/adore-djatoka.war /var/lib/tomcat7/webapps
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/adore-djatoka.war
+cp -v "$DJATOKA_HOME"/dist/adore-djatoka.war /var/lib/tomcat6/webapps
+chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/adore-djatoka.war
 
 # Libraries
 cp "$SHARED_DIR"/configs/kdu_libs.conf /etc/ld.so.conf.d/kdu_libs.conf
 
 # Sleep for 60 while Tomcat restart
 echo "Sleeping for 60 while Tomcat stack restarts"
-service tomcat7 restart
+service tomcat6 restart
 sleep 60
 
 # Logging
-cp "$SHARED_DIR"/configs/log4j.properties /var/lib/tomcat7/webapps/adore-djatoka/WEB-INF/classes
+cp "$SHARED_DIR"/configs/log4j.properties /var/lib/tomcat6/webapps/adore-djatoka/WEB-INF/classes
