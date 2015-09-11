@@ -13,7 +13,7 @@ fi
 if [ ! -d "$FEDORA_HOME" ]; then
   mkdir "$FEDORA_HOME"
 fi
-chown tomcat7:tomcat7 "$FEDORA_HOME"
+chown tomcat6:tomcat6 "$FEDORA_HOME"
 chmod g-w "$FEDORA_HOME"
 
 echo "Downloading Fedora"
@@ -44,9 +44,9 @@ if [ $? -ne 0 ]; then
 fi
 
 # Deploy fcrepo
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/fedora.war
-chown -hR tomcat7:tomcat7 "$FEDORA_HOME"
-service tomcat7 restart
+chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora.war
+chown -hR tomcat6:tomcat6 "$FEDORA_HOME"
+service tomcat6 restart
 echo "Sleeping while Fedora starts for the first time."
 sleep 45
 
@@ -69,10 +69,10 @@ cp "$SHARED_DIR"/configs/deny-apim-if-not-localhost.xml "$FEDORA_HOME"/data/fedo
 
 # Setup Drupal filter
 wget -q -O "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-3.8.1.jar
-cp -v "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" /var/lib/tomcat7/webapps/fedora/WEB-INF/lib
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.8.1.jar
+cp -v "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
+chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.8.1.jar
 cp "$SHARED_DIR"/configs/jaas.conf "$FEDORA_HOME"/server/config
 cp "$SHARED_DIR"/configs/filter-drupal.xml "$FEDORA_HOME"/server/config
 
 # Restart Tomcat
-service tomcat7 restart
+service tomcat6 restart

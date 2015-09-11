@@ -82,4 +82,4 @@ echo "flush privileges" | mysql -uroot -pislandora
 groupadd web
 usermod -a -G web www-data
 usermod -a -G web vagrant
-usermod -a -G web tomcat7
+usermod -a -G web tomcat6
