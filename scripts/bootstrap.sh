@@ -32,9 +32,9 @@ add-apt-repository -y ppa:webupd8team/java
 apt-get update
 echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
-apt-get install -y oracle-java8-installer
-update-java-alternatives -s java-8-oracle
-apt-get install -y oracle-java8-set-default
+apt-get install -y oracle-java6-installer
+update-java-alternatives -s java-6-oracle
+apt-get install -y oracle-java6-set-default
 
 # Set JAVA_HOME variable both now and for when the system restarts
 export JAVA_HOME

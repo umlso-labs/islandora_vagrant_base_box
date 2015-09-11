@@ -17,10 +17,10 @@ chown tomcat7:tomcat7 "$FEDORA_HOME"
 chmod g-w "$FEDORA_HOME"
 
 echo "Downloading Fedora"
-if [ ! -f "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar" ]; then
-  wget -q -O "/tmp/fcrepo-installer-3.8.1.jar" "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
+if [ ! -f "$DOWNLOAD_DIR/v3.6.2.tar.gz" ]; then
+  wget -q -O "/tmp/v3.6.2.tar.gz" "https://github.com/fcrepo3/fcrepo/archive/v3.6.2.tar.gz"
 else
-  cp "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar" "/tmp/fcrepo-installer-3.8.1.jar"
+  cp "$DOWNLOAD_DIR/v3.6.2.tar.gz" "/tmp/v3.6.2.tar.gz"
 fi
 
 echo "Installing Fedora"
