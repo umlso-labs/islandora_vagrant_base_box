@@ -17,21 +17,21 @@ chown tomcat7:tomcat7 "$FEDORA_HOME"
 chmod g-w "$FEDORA_HOME"
 
 echo "Downloading Fedora"
-if [ ! -f "$DOWNLOAD_DIR/v3.6.2.tar.gz" ]; then
-  wget -q -O "/tmp/v3.6.2.tar.gz" "https://github.com/fcrepo3/fcrepo/archive/v3.6.2.tar.gz"
+if [ ! -f "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar" ]; then
+  wget -q -O "/tmp/fcrepo-installer-3.6.2.jar" "http://repo1.maven.org/maven2/org/fcrepo/fcrepo-installer/3.6.2/fcrepo-installer-3.6.2.jar"
 else
-  cp "$DOWNLOAD_DIR/v3.6.2.tar.gz" "/tmp/v3.6.2.tar.gz"
+  cp "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar" "/tmp/fcrepo-installer-3.6.2.jar"
 fi
 
 echo "Installing Fedora"
-java -jar /tmp/fcrepo-installer-3.8.1.jar "$SHARED_DIR"/configs/install.properties
+java -jar /tmp/fcrepo-installer-3.6.2.jar "$SHARED_DIR"/configs/install.properties
 
 # Check the exit code from the installation process
 if [ $? -ne 0 ]; then
   # Had a corrupt jarfile in cache, if can't install then redownload it
   echo "Problem with jar file, redownloading"
-  wget -q -O "/tmp/fcrepo-installer-3.8.1.jar" "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
-  java -jar /tmp/fcrepo-installer-3.8.1.jar /tmp/install.properties
+  wget -q -O "/tmp/fcrepo-installer-3.6.2.jar" "http://repo1.maven.org/maven2/org/fcrepo/fcrepo-installer/3.6.2/fcrepo-installer-3.6.2.jar"
+  java -jar /tmp/fcrepo-installer-3.6.2.jar /tmp/install.properties
 
   if [ $? -ne 0 ]; then
     echo "Failed a second time to install from the Fedora jar... Can't proceed!"
