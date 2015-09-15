@@ -15,6 +15,8 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install libafflib-dev afflib-tools libewf-dev ewf-tools -y --force-yes
 
 # Clone and compile Sleuthkit
+# TODO: https://github.com/sleuthkit/sleuthkit/pull/352/files
+# w/ sed
 cd /tmp
 git clone https://github.com/sleuthkit/sleuthkit.git
 cd sleuthkit && ./bootstrap && ./configure && make && make install && ldconfig
