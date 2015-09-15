@@ -39,7 +39,7 @@ if [ $? -ne 0 ]; then
   else
     # Copy files to the downloads directory if they were successfully used
     cp "/tmp/install.properties" "$DOWNLOAD_DIR/install.properties"
-    cp "/tmp/fcrepo-installer-3.8.1.jar" "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar"
+    cp "/tmp/fcrepo-installer-3.6.2.jar" "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar"
   fi
 fi
 
@@ -68,9 +68,9 @@ rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/islandora/permi
 cp "$SHARED_DIR"/configs/deny-apim-if-not-localhost.xml "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml
 
 # Setup Drupal filter
-wget -q -O "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-3.8.1.jar
-cp -v "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
-chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.8.1.jar
+wget -q -O "/tmp/fcrepo-drupalauthfilter-3.6.2.jar" https://github.com/nihilanth41/islandora_drupal_filter/blob/master/fcrepo-drupalauthfilter-3.6.2.jar
+cp -v "/tmp/fcrepo-drupalauthfilter-3.6.2.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
+chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.6.2.jar
 cp "$SHARED_DIR"/configs/jaas.conf "$FEDORA_HOME"/server/config
 cp "$SHARED_DIR"/configs/filter-drupal.xml "$FEDORA_HOME"/server/config
 
