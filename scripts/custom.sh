@@ -1,7 +1,5 @@
 #!/bin/bash
-
 echo "Installing Drupal themes" 
-
 cd "$DRUPAL_HOME"/sites/all
 if [ ! -d themes ]; then
   mkdir themes
