@@ -1,4 +1,7 @@
 #!/bin/bash
+
+SHARED_DIR=$1
+
 echo "Installing Drupal themes" 
 cd "$DRUPAL_HOME"/sites/all
 if [ ! -d themes ]; then
