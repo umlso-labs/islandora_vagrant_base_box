@@ -52,18 +52,18 @@ ssh, scp, rsync:
     - `rsync --rsh='ssh -p2222' -av somedir vagrant@localhost:/tmp`
 
 ## Environment
-
+### (Note: these are specific to this fork) 
 - Ubuntu 14.04
 - Drupal 7.37
-- MySQL 5.5.41
-- Apache 2.26
-- Tomcat 7.0.52
-- Solr 4.2.0
-- Fedora 3.8.1
+- MySQL 5.5.44
+- Apache 2.4.7-1ubuntu4.5
+- Tomcat 6.0.39-1 
+- Solr 3.6.2
+- Fedora 3.6.2 
 - GSearch HEAD
 - Islandora 7.x
 - PHP 5.5.9 
-- Java 8 (Oracle)
+- Java 6 (Oracle)
 
 ## Customization
 
