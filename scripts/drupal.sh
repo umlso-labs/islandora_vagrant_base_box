@@ -24,7 +24,7 @@ service apache2 reload
 cd /var/www
 
 # Download Drupal
-drush dl drupal --drupal-project-rename=drupal
+drush dl drupal-"$DRUPAL_VERSION" --drupal-project-rename=drupal
 
 # Permissions
 chown -R www-data:www-data drupal
