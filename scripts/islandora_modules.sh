@@ -70,7 +70,14 @@ while read LINE; do
 	cd "$DRUPAL_HOME"/sites/all/libraries
 done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
 
-#Get openseadragon-plugin 
+# Install some libraries manually (don't have specific branch/commit to checkout)
+cd "$DRUPAL_HOME"/sites/all/libraries
+git clone https://github.com/nihilanth41/galleria.git galleria 
+git clone https://github.com/nihilanth41/jodconverter.git jodconverter-2.2.2 
+git clone https://github.com/nihilanth41/jquery-cycle.git jquery.cycle 
+git clone https://github.com/nihilanth41/jwplayer.git jwplayer 
+
+# Get openseadragon-plugin 
 cd "$DRUPAL_HOME"/sites/all/libraries
 wget http://openseadragon.github.io/releases/openseadragon-bin-0.9.129.zip
 unzip openseadragon-bin-0.9.129.zip 
