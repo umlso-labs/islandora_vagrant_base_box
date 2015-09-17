@@ -35,7 +35,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   shared_dir = "/vagrant"
 
-  # NOTE: fedora rest url broken again -- check drupal_filter 
   config.vm.provision :shell, inline: "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile", :privileged =>false
   config.vm.provision :shell, path: "./scripts/bootstrap.sh", :args => shared_dir
   config.vm.provision :shell, path: "./scripts/devtools.sh", :args => shared_dir

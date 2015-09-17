@@ -9,11 +9,10 @@ if [ -f "$SHARED_DIR/configs/variables" ]; then
 fi
 
 
-# Make sure libraries folder exists
+# Make sure libraries folder exists (Some modules might install libraries automatically)
 if [ ! -d "$DRUPAL_HOME/sites/all/libraries" ]; then
-	mkdir "$DRUPAL_HOME/sites/all/libraries"
+	mkdir -p "$DRUPAL_HOME/sites/all/libraries"
 fi
-
 
 # Permissions and ownership
 sudo chown -hR vagrant:www-data "$DRUPAL_HOME"/sites/all/libraries
@@ -62,10 +61,6 @@ git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
 
 # Clone libraries
-cd "$DRUPAL_HOME"/sites/all
-if [ ! -d libraries ]; then
-  mkdir libraries
-fi
 cd "$DRUPAL_HOME"/sites/all/libraries
 while read LINE; do
 	set -- $LINE 
@@ -83,6 +78,11 @@ git clone https://github.com/nihilanth41/galleria.git galleria
 git clone https://github.com/nihilanth41/jodconverter.git jodconverter-2.2.2 
 git clone https://github.com/nihilanth41/jquery-cycle.git jquery.cycle 
 git clone https://github.com/nihilanth41/jwplayer.git jwplayer 
+
+# Install plupload 1.x 
+git clone -b 1.x https://github.com/moxiecode/plupload.git 
+# Remove examples/ directory for security reasons 
+rm -rf plupload/examples
 
 # Get openseadragon-plugin 
 cd "$DRUPAL_HOME"/sites/all/libraries
