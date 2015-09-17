@@ -8,6 +8,13 @@ if [ -f "$SHARED_DIR/configs/variables" ]; then
   . "$SHARED_DIR"/configs/variables
 fi
 
+
+# Make sure libraries folder exists
+if [ ! -d "$DRUPAL_HOME/sites/all/libraries" ]; then
+	mkdir "$DRUPAL_HOME/sites/all/libraries"
+fi
+
+
 # Permissions and ownership
 sudo chown -hR vagrant:www-data "$DRUPAL_HOME"/sites/all/libraries
 sudo chown -hR vagrant:www-data "$DRUPAL_HOME"/sites/all/modules
@@ -42,7 +49,7 @@ rm -r umkc_islandora_browse
 
 # Clone oauth 
 cd "$DRUPAL_HOME"/sites/all/modules/
-git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git
+git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git oauth
 cd oauth 
 git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
