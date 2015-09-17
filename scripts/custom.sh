@@ -1,7 +1,11 @@
 #!/bin/bash
 
-echo "Installing Drupal themes" 
+SHARED_DIR=$1
+if [ -f "$SHARED_DIR/configs/variables" ]; then
+  . "$SHARED_DIR"/configs/variables
+fi
 
+echo "Installing Drupal themes" 
 cd "$DRUPAL_HOME"/sites/all
 if [ ! -d themes ]; then
   mkdir themes
