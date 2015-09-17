@@ -68,9 +68,11 @@ rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/islandora/permi
 cp "$SHARED_DIR"/configs/deny-apim-if-not-localhost.xml "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml
 
 # Setup Drupal filter
-wget -q -O "/tmp/fcrepo-drupalauthfilter-3.6.2.jar" https://github.com/nihilanth41/islandora_drupal_filter/blob/master/fcrepo-drupalauthfilter-3.6.2.jar
-cp -v "/tmp/fcrepo-drupalauthfilter-3.6.2.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
-chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.6.2.jar
+#3.6.2 breaks fedora REST connection
+DRUPAL_FILTER_VER=3.8.1
+wget -q -O "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" "https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"
+cp -v "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
+chown tomcat6:tomcat6 "/var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"
 cp "$SHARED_DIR"/configs/jaas.conf "$FEDORA_HOME"/server/config
 cp "$SHARED_DIR"/configs/filter-drupal.xml "$FEDORA_HOME"/server/config
 
