@@ -1,7 +1,7 @@
-https://github.com/philred/dl-theme.git dl-theme master 6dfe993
-https://github.com/philred/lso-theme.git lso-theme master 16f1f08
-https://github.com/philred/merlin-theme.git merlin-theme master a55680b
-https://github.com/philred/mospace-theme.git mospace-theme master 80ea218
-https://github.com/philred/mu-theme.git mu-theme master 3607ad5
-https://github.com/philred/umkc-theme.git umkc-theme master 035b3f8
-https://github.com/philred/umsl-theme.git umsl-theme master 688f676
+https://github.com/philred/dl-theme.git dl-theme 
+https://github.com/philred/lso-theme.git lso-theme 
+https://github.com/philred/merlin-theme.git merlin-theme 
+https://github.com/philred/mospace-theme.git mospace-theme 
+https://github.com/philred/mu-theme.git mu-theme 
+https://github.com/philred/umkc-theme.git umkc-theme 
+https://github.com/philred/umsl-theme.git umsl-theme 

@@ -16,8 +16,6 @@ while read LINE; do
 	set -- $LINE 
 	git clone $1 $2
 	cd $2
-	git checkout $3
-	git checkout $4
 	#Do we need the following line for each theme?
 	git config core.filemode false
 	cd "$DRUPAL_HOME"/sites/all/themes
