@@ -11,7 +11,7 @@ fi
 
 # Make sure libraries folder exists (Some modules might install libraries automatically)
 if [ ! -d "$DRUPAL_HOME/sites/all/libraries" ]; then
-	mkdir -p "$DRUPAL_HOME/sites/all/libraries"
+	sudo mkdir -p "$DRUPAL_HOME/sites/all/libraries"
 fi
 
 # Permissions and ownership
@@ -119,13 +119,6 @@ if [ -d "$HOME_DIR/.drush" -a -f "$DRUPAL_HOME/sites/all/modules/islandora_inter
 fi
 
 cd "$DRUPAL_HOME"/sites/all/modules
-#drush -y -u 1 en php_lib islandora objective_forms
-#drush -y -u 1 en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views
-#drush -y -u 1 en islandora_basic_collection islandora_pdf islandora_audio islandora_book islandora_compound_object islandora_disk_image islandora_entities islandora_entities_csv_import islandora_basic_image islandora_large_image islandora_newspaper islandora_video islandora_web_archive
-#drush -y -u 1 en islandora_premis islandora_checksum islandora_checksum_checker
-#drush -y -u 1 en islandora_book_batch islandora_pathauto islandora_pdfjs islandora_videojs
-#drush -y -u 1 en xml_forms xml_form_builder xml_schema_api xml_form_elements xml_form_api jquery_update zip_importer islandora_basic_image islandora_bibliography islandora_compound_object islandora_google_scholar islandora_scholar_embargo islandora_solr_config citation_exporter doi_importer endnotexml_importer pmid_importer ris_importer
-#drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_api islandora_xacml_editor islandora_xmlsitemap colorbox islandora_internet_archive_bookreader islandora_bagit islandora_batch_report islandora_usage_stats islandora_form_fieldpanel islandora_altmetrics islandora_populator islandora_newspaper_batch 
 drush -y -u 1 en php_lib islandora objective_forms
 drush -y -u 1 en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views 
 drush -y -u 1 en islandora_basic_collection islandora_pdf islandora_audio islandora_book islandora_compound_object islandora_entities islandora_basic_image islandora_large_image islandora_newspaper islandora_video islandora_web_archive islandora_document
@@ -135,10 +128,6 @@ drush -y -u 1 en xml_forms islandora_scholar
 drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch 
 drush -y -u 1 en google_analytics_reports islandora_bookmark islandora_bulk_operations islandora_ga_reports islandora_image_annotation islandora_importer islandora_ip_embargo islandora_jodconverter islandora_jwplayer islandora_mapping islandora_openseadragon islandora_paged_content islandora_plupload islandora_simple_workflow
 drush -y -u 1 en umkcdora umkc_feature_types topics_and_types umkc_content_types umkc_browse
-
-
-#umkc browse depends on node_export_features
-
 
 cd "$DRUPAL_HOME"/sites/all/modules
 

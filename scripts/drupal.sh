@@ -2,6 +2,13 @@
 
 echo "Installing Drupal."
 
+# Install sendmail (Drupal dependency) 
+apt-get -y install sendmail 
+
+# Enable mod_xml2enc to suppress errors when installing Drupal
+a2enmod xml2enc
+service apache2 restart
+
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then

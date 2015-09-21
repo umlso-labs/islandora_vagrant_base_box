@@ -54,7 +54,7 @@ ssh, scp, rsync:
 ## Environment
 ### (Note: these are specific to this fork) 
 - Ubuntu 14.04
-- Drupal 7.37
+- Drupal 7.36
 - MySQL 5.5.44
 - Apache 2.4.7-1ubuntu4.5
 - Tomcat 6.0.39-1 

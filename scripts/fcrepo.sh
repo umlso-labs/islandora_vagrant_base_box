@@ -69,7 +69,7 @@ cp "$SHARED_DIR"/configs/deny-apim-if-not-localhost.xml "$FEDORA_HOME"/data/fedo
 
 # Setup Drupal filter
 #3.6.2 breaks fedora REST connection
-DRUPAL_FILTER_VER=3.8.1
+DRUPAL_FILTER_VER=3.6.2
 wget -q -O "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" "https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"
 cp -v "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
 chown tomcat6:tomcat6 "/var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"

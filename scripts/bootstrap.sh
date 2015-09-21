@@ -83,9 +83,3 @@ groupadd web
 usermod -a -G web www-data
 usermod -a -G web vagrant
 usermod -a -G web tomcat6
-
-# Install sendmail (for drupal)
-apt-get -y install sendmail 
-# Enable mod_xml2enc to suppress errors when installing drupal
-a2enmod xml2enc
-service apache2 restart
