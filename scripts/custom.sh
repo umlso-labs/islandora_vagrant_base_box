@@ -20,3 +20,8 @@ while read LINE; do
 	git config core.filemode false
 	cd "$DRUPAL_HOME"/sites/all/themes
 done < "$SHARED_DIR"/configs/islandora-theme-list-umlso.txt
+
+# Create ctools/css and set permissions
+cd "$DRUPAL_HOME"/sites/all
+mkdir -p files/ctools/css 
+chmod 777 files/ctools/css
