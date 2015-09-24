@@ -44,3 +44,12 @@ drush en i18n admin_menu advanced_help block_class entity entityreference exclud
 
 # Disable toolbar module b/c it conflicts with admin_menu
 drush -y dis toolbar
+
+# Setup multi-site 
+#site_arr=( lso merlin mospace mst mu umkc umsl ) 
+#for i in "${site_arr[@]}"
+#do
+#	drush si -y --db-url=mysql://root:islandora@localhost/"$i" --sites-subdir="$i" --site-name="example.org/$i"
+#done
+# Each site-install sets the admin password. Set it once at the end: 
+#drush user-password admin --password=islandora
