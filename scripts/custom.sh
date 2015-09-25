@@ -45,7 +45,7 @@ drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entit
 # Disable toolbar module b/c it conflicts with admin_menu
  drush -y dis toolbar overlay
  
-# Suppress error about ServerName 
+# Suppress apache2 error about ServerName 
 sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Setup multi-site 
@@ -56,8 +56,6 @@ sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 #done
 # Each site-install sets the admin password. Set it once at the end: 
 #drush user-password admin --password=islandora
-
-
 
 #https://www.drupal.org/node/823990
 # Setup /etc/hosts 
@@ -70,6 +68,7 @@ sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 #service apache2 restart 
 
 # Setup database for testsite (MYSQL)
+# Do this by hand (for now)
 
 
 # Setup sites folders 
@@ -81,6 +80,19 @@ sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Use sites/default as the template for the new sites 
 #sudo cp -a default testsite.localhost
+#sudo mv testsite.localhost/default.settings.php testsite.localhost/settings.php
+#sudo chmod a+w testsite.localhost/settings.php
+
+# Replace the following with something automated ??
+# Go to testsite.localhost:8000/install.php 
+
+# Enable islandora modules for the new site 
+# drush @sites -u 1 -y en <modules> 
+
+# Configure filter-drupal.xml for the new site by adding connection line 
+# ex <connection server="localhost" port="3306" dbname="testsite" user="root" password="islandora">
+# sudo service tomcat6 restart 
+
 
 
 
