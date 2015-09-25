@@ -35,9 +35,15 @@ cd "$DRUPAL_HOME"/sites/all/libraries
 wget https://openid-selector.googlecode.com/files/openid-selector-1.3.zip
 unzip openid-selector-1.3.zip
 rm openid-selector-1.3.zip
-cd "$DRUPAL_HOME"/sites/all/modules
+
+# Install glip library (needed by git_deploy) 
+cd "$DRUPAL_HOME"/sites/all/libraries
+git clone git://github.com/halstead/glip.git glip 
+cd glip 
+git checkout 1.1 
 
 # Enable the modules
+cd "$DRUPAL_HOME"/sites/all/modules
 drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker views_slideshow views_slideshow_galleria openid_selector
 # Need ssl configured for this to work; ignore for now
 # drush en securelogin
