@@ -28,7 +28,7 @@ while read LINE; do
 	if [ "$LINE" == "" ]; then
 		continue
 	fi
-	set -- $LINE 
+	set -- $LINE
 	git clone $1 $2
 	cd $2
 	git checkout $3
@@ -39,21 +39,21 @@ done < "$SHARED_DIR"/configs/islandora-module-list-sans-tuque-umlso.txt
 
 # Get umkc_islandora_browse manually b/c it has different directory structure
 cd "$DRUPAL_HOME"/sites/all/modules/
-git clone --branch 7.x https://github.com/philred/umkc_islandora_browse.git umkc_islandora_browse 
-cd umkc_islandora_browse 
+git clone --branch 7.x https://github.com/philred/umkc_islandora_browse.git umkc_islandora_browse
+cd umkc_islandora_browse
 git checkout d892d06
 mv modules/* "$DRUPAL_HOME"/sites/all/modules/
 cd "$DRUPAL_HOME"/sites/all/modules/
-rm -r umkc_islandora_browse 
+rm -r umkc_islandora_browse
 
-# Clone oauth 
+# Clone oauth
 cd "$DRUPAL_HOME"/sites/all/modules/
 git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git oauth
-cd oauth 
+cd oauth
 git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
 
-# Clone node export 
+# Clone node export
 cd "$DRUPAL_HOME"/sites/all/modules/
 git clone --branch 7.x-3.x http://git.drupal.org/project/node_export.git
 cd node_export
@@ -63,7 +63,7 @@ cd "$DRUPAL_HOME"/sites/all/modules/
 # Clone libraries
 cd "$DRUPAL_HOME"/sites/all/libraries
 while read LINE; do
-	set -- $LINE 
+	set -- $LINE
 	git clone $1 $2
 	cd $2
 	git checkout $3
@@ -74,22 +74,22 @@ done < "$SHARED_DIR"/configs/islandora-library-list-umlso.txt
 
 # Install some libraries manually (don't have specific branch/commit to checkout)
 cd "$DRUPAL_HOME"/sites/all/libraries
-git clone https://github.com/nihilanth41/galleria.git galleria 
-git clone https://github.com/nihilanth41/jodconverter.git jodconverter-2.2.2 
-git clone https://github.com/nihilanth41/jquery-cycle.git jquery.cycle 
-git clone https://github.com/nihilanth41/jwplayer.git jwplayer 
+git clone https://github.com/nihilanth41/galleria.git galleria
+git clone https://github.com/nihilanth41/jodconverter.git jodconverter-2.2.2
+git clone https://github.com/nihilanth41/jquery-cycle.git jquery.cycle
+git clone https://github.com/nihilanth41/jwplayer.git jwplayer
 
-# Install plupload 1.x 
-git clone -b 1.x https://github.com/moxiecode/plupload.git 
-# Remove examples/ directory for security reasons 
+# Install plupload 1.x
+git clone -b 1.x https://github.com/moxiecode/plupload.git
+# Remove examples/ directory for security reasons
 rm -rf plupload/examples
 
-# Get openseadragon-plugin 
+# Get openseadragon-plugin
 cd "$DRUPAL_HOME"/sites/all/libraries
 wget http://openseadragon.github.io/releases/openseadragon-bin-0.9.129.zip
-unzip openseadragon-bin-0.9.129.zip 
+unzip openseadragon-bin-0.9.129.zip
 # Directory must be: $DRUPAL_HOME/sites/all/libraries/openseadragon
-mv openseadragon-bin-0.9.129 openseadragon 
+mv openseadragon-bin-0.9.129 openseadragon
 cd "$DRUPAL_HOME"/sites/all/libraries
 
 # Check for a user's .drush folder, create if it doesn't exist
@@ -120,14 +120,17 @@ fi
 
 cd "$DRUPAL_HOME"/sites/all/modules
 drush -y -u 1 en php_lib islandora objective_forms
-drush -y -u 1 en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views 
+drush -y -u 1 en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views
 drush -y -u 1 en islandora_basic_collection islandora_pdf islandora_audio islandora_book islandora_compound_object islandora_entities islandora_basic_image islandora_large_image islandora_newspaper islandora_video islandora_web_archive islandora_document
 drush -y -u 1 en islandora_premis islandora_checksum islandora_checksum_checker
 drush -y -u 1 en islandora_book_batch islandora_pathauto islandora_pdfjs islandora_videojs
 drush -y -u 1 en xml_forms islandora_scholar
-drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch 
+drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch
 drush -y -u 1 en google_analytics_reports islandora_bookmark islandora_bulk_operations islandora_ga_reports islandora_image_annotation islandora_importer islandora_ip_embargo islandora_jodconverter islandora_jwplayer islandora_mapping islandora_openseadragon islandora_paged_content islandora_plupload islandora_simple_workflow
 drush -y -u 1 en umkcdora umkc_feature_types topics_and_types umkc_content_types umkc_browse
+drush -y -u 1 en islandora_book_batch islandora_pathauto islandora_pdfjs islandora_videojs islandora_jwplayer
+drush -y -u 1 en xml_forms xml_form_builder xml_schema_api xml_form_elements xml_form_api jquery_update zip_importer islandora_basic_image islandora_bibliography islandora_compound_object islandora_google_scholar islandora_scholar_embargo islandora_solr_config citation_exporter doi_importer endnotexml_importer pmid_importer ris_importer
+drush -y -u 1 en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_simple_workflow islandora_xacml_api islandora_xacml_editor islandora_xmlsitemap colorbox islandora_internet_archive_bookreader islandora_bagit islandora_batch_report islandora_usage_stats islandora_form_fieldpanel islandora_altmetrics islandora_populator islandora_newspaper_batch 
 
 cd "$DRUPAL_HOME"/sites/all/modules
 
