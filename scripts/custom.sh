@@ -21,6 +21,10 @@ while read LINE; do
 	cd "$DRUPAL_HOME"/sites/all/themes
 done < "$SHARED_DIR"/configs/islandora-theme-list-umlso.txt
 
+# Install GMP library (Recommended by OpenID module for php) 
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get -y install php5-gmp 
+
 # Create ctools/css and set permissions
 cd "$DRUPAL_HOME"/sites/all
 mkdir -p files/ctools/css 
