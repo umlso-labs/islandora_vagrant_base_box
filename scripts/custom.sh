@@ -44,6 +44,9 @@ drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entit
 
 # Disable toolbar module b/c it conflicts with admin_menu
  drush -y dis toolbar overlay
+ 
+# Suppress error about ServerName 
+sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Setup multi-site 
 #site_arr=( lso merlin mospace mst mu umkc umsl ) 
@@ -53,3 +56,32 @@ drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entit
 #done
 # Each site-install sets the admin password. Set it once at the end: 
 #drush user-password admin --password=islandora
+
+
+
+#https://www.drupal.org/node/823990
+# Setup /etc/hosts 
+#sudo echo "127.0.0.1 testsite.localhost" >> /etc/hosts 
+
+# Setup Virtual Hosts (apache)
+#/etc/apache2/httpd.conf -> (ubuntu)/etc/apache2/sites-available/000-default.conf
+
+# Restart apache2 
+#service apache2 restart 
+
+# Setup database for testsite (MYSQL)
+
+
+# Setup sites folders 
+# Assert default/files exists 
+#cd "$DRUPAL_HOME"/sites/
+#if [ ! -d default/files ]; then  
+#	sudo mkdir -pm 777 default/files 
+#fi
+
+# Use sites/default as the template for the new sites 
+#sudo cp -a default testsite.localhost
+
+
+
+
