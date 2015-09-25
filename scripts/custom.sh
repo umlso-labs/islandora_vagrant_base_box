@@ -28,7 +28,7 @@ chmod 777 files/ctools/css
 
 echo "Installing Drupal contrib modules" 
 cd "$DRUPAL_HOME"/sites/all/modules
-drush dl i18n admin_menu advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker securelogin views_slideshow views_slideshow_galleria openid_selector
+drush -y dl job_scheduler i18n admin_menu advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker securelogin views_slideshow views_slideshow_galleria openid_selector
 
 # Install openid-selector in libraries directory
 cd "$DRUPAL_HOME"/sites/all/libraries
@@ -38,12 +38,12 @@ rm openid-selector-1.3.zip
 cd "$DRUPAL_HOME"/sites/all/modules
 
 # Enable the modules
-drush en i18n admin_menu advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker views_slideshow views_slideshow_galleria openid_selector
+drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker views_slideshow views_slideshow_galleria openid_selector
 # Need ssl configured for this to work; ignore for now
 # drush en securelogin
 
 # Disable toolbar module b/c it conflicts with admin_menu
-drush -y dis toolbar
+ drush -y dis toolbar overlay
 
 # Setup multi-site 
 #site_arr=( lso merlin mospace mst mu umkc umsl ) 
