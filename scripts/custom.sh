@@ -68,6 +68,7 @@ do
 	# Set password for each site 
 	cd "$DRUPAL_HOME/sites/$DOMAIN_NAME.$i"
 	drush user-password admin --password=islandora
+	mkdir -pm 777 files/ctools/css 
 	# Create symlinks
 	cd $DRUPAL_HOME
 	if [ -f $i ]; then
