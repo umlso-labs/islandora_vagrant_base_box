@@ -59,6 +59,11 @@ drush -y en i18n admin_menu job_scheduler advanced_help block_class entity entit
 # Suppress apache2 error about ServerName 
 sudo echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Set permissions (See: https://github.com/Islandora-Labs/islandora_vagrant/issues/76)
+sudo chown -hR vagrant:www-data "$DRUPAL_HOME"/sites/all/modules
+sudo chmod -R 755 "$DRUPAL_HOME"/sites/all/libraries
+sudo chmod -R 755 "$DRUPAL_HOME"/sites/all/modules
+
 # Setup multi-site 
 #site_arr=( lso merlin mospace mst mu umkc umsl ) 
 #for i in "${site_arr[@]}"
