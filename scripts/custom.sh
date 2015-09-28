@@ -76,9 +76,23 @@ do
 	ln -s . $i 
 done
 
-
-# Enable islandora modules for the new site 
-# drush @sites -u 1 -y en <modules> 
+# Enable islandora modules for all the sites
+# Super redundant (just to test)
+cd $DRUPAL_HOME
+drush @sites -u 1 -y en php_lib islandora objective_forms
+drush @sites -u 1 -y en islandora_solr islandora_solr_metadata islandora_solr_facet_pages islandora_solr_views
+drush @sites -u 1 -y en islandora_basic_collection islandora_pdf islandora_audio islandora_book islandora_compound_object islandora_entities islandora_basic_image islandora_large_image islandora_newspaper islandora_video islandora_web_archive islandora_document
+drush @sites -u 1 -y en islandora_premis islandora_checksum islandora_checksum_checker
+drush @sites -u 1 -y en islandora_book_batch islandora_pathauto islandora_pdfjs islandora_videojs
+drush @sites -u 1 -y en xml_forms islandora_scholar
+drush @sites -u 1 -y en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_xacml_editor islandora_xmlsitemap islandora_internet_archive_bookreader islandora_bagit islandora_batch islandora_newspaper_batch
+drush @sites -u 1 -y en google_analytics_reports islandora_bookmark islandora_bulk_operations islandora_ga_reports islandora_image_annotation islandora_importer islandora_ip_embargo islandora_jodconverter islandora_jwplayer islandora_mapping islandora_openseadragon islandora_paged_content islandora_plupload islandora_simple_workflow
+drush @sites -u 1 -y en umkcdora umkc_feature_types topics_and_types umkc_content_types umkc_browse
+drush @sites -u 1 -y en islandora_book_batch islandora_pathauto islandora_pdfjs islandora_videojs islandora_jwplayer
+drush @sites -u 1 -y en xml_forms xml_form_builder xml_schema_api xml_form_elements xml_form_api jquery_update zip_importer islandora_basic_image islandora_bibliography islandora_compound_object islandora_google_scholar islandora_scholar_embargo islandora_solr_config citation_exporter doi_importer endnotexml_importer pmid_importer ris_importer
+drush @sites -u 1 -y en islandora_fits islandora_ocr islandora_oai islandora_marcxml islandora_simple_workflow islandora_xacml_api islandora_xacml_editor islandora_xmlsitemap colorbox islandora_internet_archive_bookreader islandora_bagit islandora_batch_report islandora_usage_stats islandora_form_fieldpanel islandora_altmetrics islandora_populator islandora_newspaper_batch 
+drush @sites -u 1 -y en i18n admin_menu job_scheduler advanced_help block_class entity entityreference exclude_node_title extlink feeds git_deploy image_link_formatter linkchecker views_slideshow views_slideshow_galleria openid_selector
+drush @sites -u 1 -y dis toolbar overlay 
 
 # Configure filter-drupal.xml for the new site by adding connection line 
 # ex <connection server="localhost" port="3306" dbname="testsite" user="root" password="islandora">
