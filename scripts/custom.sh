@@ -22,7 +22,6 @@ while read LINE; do
 done < "$SHARED_DIR"/configs/islandora-theme-list-umlso.txt
 
 # Install GMP library (Recommended by OpenID module for php) 
-export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y install php5-gmp 
 sudo service apache2 restart 
 

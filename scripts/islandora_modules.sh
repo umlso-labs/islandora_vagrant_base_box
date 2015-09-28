@@ -48,14 +48,14 @@ rm -r umkc_islandora_browse
 
 # Clone oauth
 cd "$DRUPAL_HOME"/sites/all/modules/
-git clone --branch 7.x-3.x http://git.drupal.org/project/oauth.git oauth
+git clone --branch 7.x-3.2 http://git.drupal.org/project/oauth.git oauth
 cd oauth
 git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
 
 # Clone node export
 cd "$DRUPAL_HOME"/sites/all/modules/
-git clone --branch 7.x-3.x http://git.drupal.org/project/node_export.git
+git clone --branch 7.x-3.0 http://git.drupal.org/project/node_export.git
 cd node_export
 git config core.filemode false
 cd "$DRUPAL_HOME"/sites/all/modules/
