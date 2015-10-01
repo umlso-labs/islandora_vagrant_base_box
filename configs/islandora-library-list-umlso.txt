@@ -1,3 +1,0 @@
-https://github.com/Islandora/internet_archive_bookreader.git bookreader master fcc7467
-https://github.com/mozilla/pdf.js.git pdfjs master eb2ad11
-https://github.com/Islandora/tuque.git tuque 1.x dea1b16

@@ -1,7 +1,0 @@
-https://github.com/philred/dl-theme.git dl-theme 
-https://github.com/philred/lso-theme.git lso-theme 
-https://github.com/philred/merlin-theme.git merlin-theme 
-https://github.com/philred/mospace-theme.git mospace-theme 
-https://github.com/philred/mu-theme.git mu-theme 
-https://github.com/philred/umkc-theme.git umkc-theme 
-https://github.com/philred/umsl-theme.git umsl-theme 
