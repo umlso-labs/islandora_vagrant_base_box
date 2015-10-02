@@ -1,7 +1,3 @@
 .vagrant
 scripts/custom.sh
-<<<<<<< HEAD
 package.box
-=======
-downloads
->>>>>>> remotes/deprecated/basebox
