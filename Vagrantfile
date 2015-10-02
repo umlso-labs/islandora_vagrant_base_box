@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   shared_dir = "/vagrant"
   
+  # Don't replace insecure ssh key 
   config.ssh.insert_key = false
   
   config.vm.provision :shell, inline: "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile", :privileged =>false
