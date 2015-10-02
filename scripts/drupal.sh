@@ -2,6 +2,10 @@
 
 echo "Installing Drupal."
 
+# Enable mod_xml2enc to suppress errors when installing Drupal
+a2enmod xml2enc
+service apache2 restart
+
 SHARED_DIR=$1
 
 if [ -f "$SHARED_DIR/configs/variables" ]; then
@@ -15,7 +19,7 @@ export DEBIAN_FRONTEND=noninteractive
 export APACHE_CONFIG_FILE=/etc/apache2/sites-enabled/000-default.conf
 
 # Drush and drupal deps
-apt-get -y install php5-gd php5-dev php5-xsl php-soap php5-curl php5-imagick imagemagick lame libimage-exiftool-perl bibutils poppler-utils
+apt-get -y install php5-gd php5-dev php5-xsl php-soap php5-curl php5-imagick imagemagick lame libimage-exiftool-perl bibutils poppler-utils sendmail
 pecl install uploadprogress
 sed -i '/; extension_dir = "ext"/ a\ extension=uploadprogress.so' /etc/php5/apache2/php.ini
 apt-get -y install drush
@@ -24,7 +28,7 @@ service apache2 reload
 cd /var/www
 
 # Download Drupal
-drush dl drupal --drupal-project-rename=drupal
+drush dl drupal-"$DRUPAL_VERSION" --drupal-project-rename=drupal
 
 # Permissions
 chown -R www-data:www-data drupal

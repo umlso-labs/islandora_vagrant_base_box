@@ -16,5 +16,11 @@ apt-get install libafflib-dev afflib-tools libewf-dev ewf-tools -y --force-yes
 
 # Clone and compile Sleuthkit
 cd /tmp
-git clone https://github.com/sleuthkit/sleuthkit.git
-cd sleuthkit && ./bootstrap && ./configure && make && make install && ldconfig
+#sleuthkit HEAD won't build presumably b/c of java6, so we switch back to master branch
+git clone -b master https://github.com/sleuthkit/sleuthkit.git
+cd /tmp/sleuthkit/bindings/java
+sed -i.bak s/3.8.0-SNAPSHOT/latest.integration/g ivy.xml
+#Delete the following two lines to fix the build
+sed -i.bak '/<ibiblio name="xerial" m2compatible="true"/d' ivysettings.xml
+sed -i.bak '/root="http:\/\/oss.sonatype.org\/content\/repositories\/snapshots"\/>/d' ivysettings.xml
+cd /tmp/sleuthkit && ./bootstrap && ./configure && make && make install && ldconfig

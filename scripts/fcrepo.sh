@@ -13,25 +13,25 @@ fi
 if [ ! -d "$FEDORA_HOME" ]; then
   mkdir "$FEDORA_HOME"
 fi
-chown tomcat7:tomcat7 "$FEDORA_HOME"
+chown tomcat6:tomcat6 "$FEDORA_HOME"
 chmod g-w "$FEDORA_HOME"
 
 echo "Downloading Fedora"
-if [ ! -f "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar" ]; then
-  wget -q -O "/tmp/fcrepo-installer-3.8.1.jar" "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
+if [ ! -f "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar" ]; then
+  wget -q -O "/tmp/fcrepo-installer-3.6.2.jar" "http://repo1.maven.org/maven2/org/fcrepo/fcrepo-installer/3.6.2/fcrepo-installer-3.6.2.jar"
 else
-  cp "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar" "/tmp/fcrepo-installer-3.8.1.jar"
+  cp "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar" "/tmp/fcrepo-installer-3.6.2.jar"
 fi
 
 echo "Installing Fedora"
-java -jar /tmp/fcrepo-installer-3.8.1.jar "$SHARED_DIR"/configs/install.properties
+java -jar /tmp/fcrepo-installer-3.6.2.jar "$SHARED_DIR"/configs/install.properties
 
 # Check the exit code from the installation process
 if [ $? -ne 0 ]; then
   # Had a corrupt jarfile in cache, if can't install then redownload it
   echo "Problem with jar file, redownloading"
-  wget -q -O "/tmp/fcrepo-installer-3.8.1.jar" "https://github.com/fcrepo3/fcrepo/releases/download/v3.8.1/fcrepo-installer-3.8.1.jar"
-  java -jar /tmp/fcrepo-installer-3.8.1.jar /tmp/install.properties
+  wget -q -O "/tmp/fcrepo-installer-3.6.2.jar" "http://repo1.maven.org/maven2/org/fcrepo/fcrepo-installer/3.6.2/fcrepo-installer-3.6.2.jar"
+  java -jar /tmp/fcrepo-installer-3.6.2.jar /tmp/install.properties
 
   if [ $? -ne 0 ]; then
     echo "Failed a second time to install from the Fedora jar... Can't proceed!"
@@ -39,14 +39,14 @@ if [ $? -ne 0 ]; then
   else
     # Copy files to the downloads directory if they were successfully used
     cp "/tmp/install.properties" "$DOWNLOAD_DIR/install.properties"
-    cp "/tmp/fcrepo-installer-3.8.1.jar" "$DOWNLOAD_DIR/fcrepo-installer-3.8.1.jar"
+    cp "/tmp/fcrepo-installer-3.6.2.jar" "$DOWNLOAD_DIR/fcrepo-installer-3.6.2.jar"
   fi
 fi
 
 # Deploy fcrepo
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/fedora.war
-chown -hR tomcat7:tomcat7 "$FEDORA_HOME"
-service tomcat7 restart
+chown tomcat6:tomcat6 /var/lib/tomcat6/webapps/fedora.war
+chown -hR tomcat6:tomcat6 "$FEDORA_HOME"
+service tomcat6 restart
 echo "Sleeping while Fedora starts for the first time."
 sleep 45
 
@@ -68,11 +68,13 @@ rm "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/islandora/permi
 cp "$SHARED_DIR"/configs/deny-apim-if-not-localhost.xml "$FEDORA_HOME"/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml
 
 # Setup Drupal filter
-wget -q -O "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-3.8.1.jar
-cp -v "/tmp/fcrepo-drupalauthfilter-3.8.1.jar" /var/lib/tomcat7/webapps/fedora/WEB-INF/lib
-chown tomcat7:tomcat7 /var/lib/tomcat7/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-3.8.1.jar
+#3.6.2 breaks fedora REST connection
+DRUPAL_FILTER_VER=3.6.2
+wget -q -O "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" "https://github.com/Islandora/islandora_drupal_filter/releases/download/v7.1.3/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"
+cp -v "/tmp/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar" /var/lib/tomcat6/webapps/fedora/WEB-INF/lib
+chown tomcat6:tomcat6 "/var/lib/tomcat6/webapps/fedora/WEB-INF/lib/fcrepo-drupalauthfilter-$DRUPAL_FILTER_VER.jar"
 cp "$SHARED_DIR"/configs/jaas.conf "$FEDORA_HOME"/server/config
 cp "$SHARED_DIR"/configs/filter-drupal.xml "$FEDORA_HOME"/server/config
 
 # Restart Tomcat
-service tomcat7 restart
+service tomcat6 restart

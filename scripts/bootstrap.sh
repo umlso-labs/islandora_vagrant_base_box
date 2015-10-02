@@ -32,9 +32,9 @@ add-apt-repository -y ppa:webupd8team/java
 apt-get update
 echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
-apt-get install -y oracle-java8-installer
-update-java-alternatives -s java-8-oracle
-apt-get install -y oracle-java8-set-default
+apt-get install -y oracle-java6-installer
+update-java-alternatives -s java-6-oracle
+apt-get install -y oracle-java6-set-default
 
 # Set JAVA_HOME variable both now and for when the system restarts
 export JAVA_HOME
@@ -45,11 +45,11 @@ echo "JAVA_HOME=$JAVA_HOME" >> /etc/environment
 apt-get -y install maven
 
 # Tomcat
-apt-get -y install tomcat7 tomcat7-admin
-usermod -a -G tomcat7 vagrant
+apt-get -y install tomcat6 tomcat6-admin
+usermod -a -G tomcat6 vagrant
 
 # We still need this for the rest of the times Tomcat is run in the other build scripts
-sed -i "s|#JAVA_HOME=/usr/lib/jvm/openjdk-[0-9]\+-jdk|JAVA_HOME=$JAVA_HOME|g" /etc/default/tomcat7
+sed -i "s|#JAVA_HOME=/usr/lib/jvm/openjdk-[0-9]\+-jdk|JAVA_HOME=$JAVA_HOME|g" /etc/default/tomcat6
 
 # Wget and curl
 apt-get -y install wget curl
@@ -82,4 +82,4 @@ echo "flush privileges" | mysql -uroot -pislandora
 groupadd web
 usermod -a -G web www-data
 usermod -a -G web vagrant
-usermod -a -G web tomcat7
+usermod -a -G web tomcat6

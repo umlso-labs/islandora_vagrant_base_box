@@ -4,7 +4,12 @@
 
 This is a base box for [Islandora Vagrant](https://github.com/Islandora-Labs/islandora_vagrant), and an export box lives on [atlas](https://atlas.hashicorp.com/ruebot/boxes/islandora-base).
 
-The virtual machine that is built uses 3GB of RAM. Your host machine will need to be able to support that.
+By default the virtual machine that is built uses 3GB of RAM. Your host machine will need to be able to support that. You can override the CPU and RAM allocation by creating `ISLANDORA_VAGRANT_CPUS` and `ISLANDORA_VAGRANT_MEMORY` environment variables and setting the values. For example, on an Ubuntu host you could add to `~/.bashrc`:
+
+```bash
+export ISLANDORA_VAGRANT_CPUS=4
+export ISLANDORA_VAGRANT_MEMORY=4096
+```
 
 N.B. This virtual machine **should not** be used in production.
 
@@ -52,17 +57,17 @@ ssh, scp, rsync:
     - `rsync --rsh='ssh -p2222' -av somedir vagrant@localhost:/tmp`
 
 ## Environment
-
+### (Note: these are specific to this fork) 
 - Ubuntu 14.04
-- Drupal 7.37
-- MySQL 5.5.41
-- Apache 2.26
-- Tomcat 7.0.52
-- Solr 4.2.0
-- Fedora 3.8.1
+- Drupal 7.39
+- MySQL 5.5.44
+- Apache 2.4.7-1ubuntu4.5
+- Tomcat 6.0.39-1 
+- Solr 3.6.2
+- Fedora 3.6.2 
 - GSearch HEAD
 - PHP 5.5.9 
-- Java 8 (Oracle)
+- Java 6 (Oracle)
 
 ## Customization
 
@@ -87,6 +92,7 @@ To create a custom base box to use with Atlas (e.g., if you need different versi
 * [Logan Cox](https://github.com/lo5an)
 * [Kevin Clarke](https://github.com/ksclarke)
 * [Mark Jordan](https://github.com/mjordan)
+* [Mark Cooper](https://github.com/mark-cooper)
 
 ## Acknowledgements
 
