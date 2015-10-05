@@ -61,6 +61,10 @@ NameVirtualHost \*:8000" /etc/apache2/ports.conf
 
 read -d '' APACHE_CONFIG << APACHE_CONFIG_TEXT
 	ServerAlias islandora-vagrant
+	
+	RewriteEngine on
+	RewriteCond %{HTTP_HOST} !^localhost
+	RewriteRule (.*) - [F] 
 
 	<Directory ${DRUPAL_HOME}>
 		Options Indexes FollowSymLinks
