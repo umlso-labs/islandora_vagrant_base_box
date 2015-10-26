@@ -107,7 +107,12 @@ service apache2 restart
 if [ ! -d sites/all/modules ]; then
   mkdir -p sites/all/modules
 fi
-cd sites/all/modules
+
+# Make modules/contrib directory 
+if [ ! -d sites/all/modules/contrib ]; then
+  mkdir -p sites/all/modules/contrib 
+fi
+cd sites/all/modules/contrib 
 
 # Modules
 drush dl devel imagemagick ctools jquery_update pathauto xmlsitemap views variable token libraries datepicker date
