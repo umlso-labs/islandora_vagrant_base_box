@@ -1,3 +1,4 @@
 .vagrant
+scripts/custom.sh
 downloads
 package.box

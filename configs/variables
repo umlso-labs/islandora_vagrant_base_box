@@ -18,4 +18,4 @@ SOLR_HOME="/usr/local/solr"
 SOLR_VERSION=3.6.2
 
 DRUPAL_HOME="/var/www/drupal"
-DRUPAL_VERSION=7.39
+DRUPAL_VERSION=7.41
