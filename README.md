@@ -18,7 +18,7 @@ N.B. This virtual machine **should not** be used in production.
 
 ## Use
 
-1. `git clone https://github.com/islandora-labs/islandora_vagrant_base_box`
+1. `git clone https://github.com/umlso-labs/islandora_vagrant_base_box`
 2. `cd islandora_vagrant`
 3. `vagrant up`
 
