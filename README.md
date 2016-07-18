@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a base box for [Islandora Vagrant](https://github.com/nihilanth41/islandora_vagrant), and an export box lives on [atlas](https://atlas.hashicorp.com/zrrm74/boxes/islandora-bb-umlso).
+This is a base box for [Islandora Vagrant](https://github.com/umlso-labs/islandora_vagrant), and an export box lives on [atlas](https://atlas.hashicorp.com/zrrm74/boxes/islandora-bb-umlso).
 
 By default the virtual machine that is built uses 3GB of RAM. Your host machine will need to be able to support that. You can override the CPU and RAM allocation by creating `ISLANDORA_VAGRANT_CPUS` and `ISLANDORA_VAGRANT_MEMORY` environment variables and setting the values. For example, on an Ubuntu host you could add to `~/.bashrc`:
 
@@ -74,7 +74,7 @@ If you'd like to add your own customization script (to install additional module
 ### Custom base box
 To create a custom base box to use with Atlas (e.g., if you need different versions of Solr, Fedora, Java, etc.) the basic steps are as follows: 
 - Clone the repo 
- - `git clone https://github.com/Islandora-Labs/islandora_vagrant_base_box`
+ - `git clone https://github.com/umlso-labs/islandora_vagrant_base_box`
  - `cd islandora_vagrant_base_box`
 - Customize the provisioning scripts as necessary (Make note of the VM name)
 - Provision the VM
