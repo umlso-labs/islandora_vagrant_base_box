@@ -10,11 +10,10 @@ fi
 
 # Dependencies
 cd /tmp
-git clone https://github.com/discoverygarden/basic-solr-config.git
-cd basic-solr-config
-git checkout 4.x
+git clone --recursive -b 4.x https://github.com/discoverygarden/basic-solr-config.git
 cd islandora_transforms
-sed -i 's#/usr/local/fedora/tomcat#/var/lib/tomcat6#g' ./*xslt
+find . -name '*.xslt' -print0 | xargs -0 -I {} -P 0 sed -i -e 's#/usr/local/fedora/tomcat#/var/lib/tomcat6#g' {}
+
 
 # dgi_gsearch_extensions
 cd /tmp
